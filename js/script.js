@@ -5,22 +5,22 @@ $("next-btn").click(()=>{
     fetch("https://randomuser.me/api/")
     .then(response => response.json)
     .then((user) => {
-    //$.get("https://randomuser.me/api/", function(response){
-        const firstName = user.results.name.first;
-        const lastName = user.results.name.last;
-        console.log(firstName);
-        $("name").innerText = firstName + " " + lastName;
+        var firstName = user.results.name.first;
+        var lastName = user.results.name.last;
+        console.log(user.results.name.first);
+        $("name").innerHTML = firstName + " " + lastName;
 
-        const email = user.results.email;
-        $("email").innerText = email;
+        var email = user.results.email;
+        $("email").innerHTML = email;
 
         const city = user.results.location.city;
         const state = user.results.location.state;
         const country = user.results.location.country;
-        $("address").innerText = city + ", " + state + ", " + country;
+        $("address").innerHTML = city + ", " + state + ", " + country;
 
         const pfp = user.results.picture.thumbnail;
         //TODO figure out how to change the picture link
+        var imgLink = $(".image").firstElementChild;
 
         const gender = user.results.gender;
         if (gender === male){
