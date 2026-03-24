@@ -1,33 +1,33 @@
 // NOTE: You may use the sample user in the data/user.json file to test your code before your hit the API. 
 // Write your code below.
 
-$("next-btn").click(()=>{
+//I WAS MISSING THE FLIPPIN HASHTAG
+$("#next-btn").click(function(){
+    
     fetch("https://randomuser.me/api/")
-    .then(response => response.json)
+    .then(response => response.json())
     .then((user) => {
         var firstName = user.results.name.first;
         var lastName = user.results.name.last;
         console.log(user.results.name.first);
-        $("name").innerHTML = firstName + " " + lastName;
+        $("#name").text(firstName + " " + lastName);
 
         var email = user.results.email;
-        $("email").innerHTML = email;
+        $("#email").text(email);
 
         const city = user.results.location.city;
         const state = user.results.location.state;
         const country = user.results.location.country;
         $("address").innerHTML = city + ", " + state + ", " + country;
 
-        const pfp = user.results.picture.thumbnail;
-        //TODO figure out how to change the picture link
-        var imgLink = $(".image").firstElementChild;
+        $(".image img").attr("src", user.results.picture.large);
 
         const gender = user.results.gender;
         if (gender === male){
             $(".body").color = steelblue;
         }
         else {
-            $(".body").color = rebeccapurple;
+            $(".body").css("background-color", "rebeccapurple");
         }
 
         const age = user.results.dob.age;
